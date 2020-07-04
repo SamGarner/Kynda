@@ -2,6 +2,19 @@
 #group by titles
 #format
 
-text = File.read("clippings.txt")
+# File.read eg:  text = File.read("clippings.txt")
 
-titles = []
+# Regex to get titles: /==========(.*)\n(.*)/
+
+titles = File.read("shortclippings.txt").scan(/==========\n(.*)\n/)
+
+# remove duplicates
+	#.inject combo with .include?
+
+titlelist = titles.uniq
+
+## skip this for now but the Amsterdam title example has a leading space, can't get it off without making things worse
+titlelist.map {|t| t.strip}
+titlelist.map {|t| t.to_s.strip}
+
+# each loop...for each title, find all the highlights and output (combined file and individual books files?)
