@@ -1,0 +1,7 @@
+#split on title line
+#group by titles
+#format
+
+text = File.read("clippings.txt")
+
+titles = []
