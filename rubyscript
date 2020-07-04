@@ -6,15 +6,23 @@
 
 # Regex to get titles: /==========(.*)\n(.*)/
 
-titles = File.read("shortclippings.txt").scan(/==========\n(.*)\n/)
+titles = File.read("shortclippings.txt").scan(/={10}\n(.*)\n/).flatten
 
 # remove duplicates
 	#.inject combo with .include?
 
 titlelist = titles.uniq
+  #with Regex, first line is missing add in with something like: 
+  #>> titlelist.include?(File.readlines("shortclippings.txt")[0])   BUT need to get that other leading space off first then to avoid doubling down on the Amsterdam book
 
 ## skip this for now but the Amsterdam title example has a leading space, can't get it off without making things worse
 titlelist.map {|t| t.strip}
 titlelist.map {|t| t.to_s.strip}
 
 # each loop...for each title, find all the highlights and output (combined file and individual books files?)
+##look for match on title[n](.*)={10}/m
+
+puts File.read("shortclippings.txt").scan(/#{Regexp.quote(titlelist[0])}/)
+##the code on the next line will return everything for a given title, that is below
+##the title line and above the ========== line (includes the your highlight page/date/time line)
+##put all these into a hash/array organized by book and then work on cleaning them up?
