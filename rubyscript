@@ -23,6 +23,8 @@ titlelist.map {|t| t.to_s.strip}
 ##look for match on title[n](.*)={10}/m
 
 puts File.read("shortclippings.txt").scan(/#{Regexp.quote(titlelist[0])}/)
-##the code on the next line will return everything for a given title, that is below
+##the code on the next line below will return everything for a given title, that is below
 ##the title line and above the ========== line (includes the your highlight page/date/time line)
 ##put all these into a hash/array organized by book and then work on cleaning them up?
+puts File.read("shortclippings.txt").scan(/#{Regexp.quote(titlelist[0])}(.*)\n(.*)\n\n(.*)\n=======/)
+#looks like can add .flatten to this and then want every third element as a quote [0],[2],[5],etc.
