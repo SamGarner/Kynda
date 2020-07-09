@@ -1,0 +1,26 @@
+book_title_regexp = /={10}\r\n(.*)\r\n/
+kindle_clippings = "My Clippings"
+titles = File.read(kindle_clippings).scan(book_title_regexp).flatten.uniq!
+today = Time.now.strftime("%Y%m%d")
+all_highlights_filename = "All_Kindle_Highlights #{today}.txt"
+
+File.write(all_highlights_filename,"")
+
+titles.each { |title|	
+
+	if title[0] =~ /[\w]/
+		corrected_title = title
+	else
+		corrected_title = title[1..-1]
+	end
+
+	clippings = File.read(kindle_clippings).scan(
+		/#{Regexp.quote(corrected_title)}(.*)\r\n(.*)\r\n\r\n(.*)\r\n=======/).flatten
+	highlights = clippings.reject { |clipping| clipping.match(
+		/#{Regexp.quote("- Your Highlight")}/) || clipping.length < 2 }
+	File.write("#{corrected_title.strip} #{today}.txt", highlights.join("\n\n"))
+	File.write(all_highlights_filename,
+		"="*80  +"\n#{corrected_title.strip}\n\n", mode:"a")
+	File.write(all_highlights_filename,
+		highlights.join("\n\n") + "\n", mode:"a")
+	}
