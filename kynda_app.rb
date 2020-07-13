@@ -1,7 +1,7 @@
 require 'sinatra'
 
 get '/' do
-	'hello, Kynda!'
+	erb :index
 end
 
 get '/about' do
