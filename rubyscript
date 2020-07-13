@@ -28,3 +28,23 @@ puts File.read("shortclippings.txt").scan(/#{Regexp.quote(titlelist[0])}/)
 ##put all these into a hash/array organized by book and then work on cleaning them up?
 puts File.read("shortclippings.txt").scan(/#{Regexp.quote(titlelist[0])}(.*)\n(.*)\n\n(.*)\n=======/)
 #looks like can add .flatten to this and then want every third element as a quote [0],[2],[5],etc.
+# NOTE - using titlelist[0] will only give us clippings for the first book, how to iterate this?
+
+##OLD THOUGHTS
+# get i for 0 ...quote length, then pull out the modul0 3 ones (would need to add in [0] 
+# 	or unshift a few placeholder elements to the front of the array...iterate for each quotes[i] value?)
+#clippings.unshift #one time means [3], [6], etc will pull out actual clippings now.
+
+#could also use reject to just get true 'clippings' in
+#a variable and then use File.write to add the to the file (apppend
+#if dont' want to overwrite
+##### REVERSE CLIPPING AND QUOTE TERMINOLOGY #####
+highlights = clippings.reject { |clipping| clipping.match(/#{Regexp.quote("- Your Highlight")}/) || clipping.length < 2 }
+
+##highlights variable will now hold all 'true' highlights and no empty strings 
+##or location time values
+
+#output to file works, may want to insert empty row between each
+#need to include title/rename file based on title
+#may also want to append into "all highlights" file
+File.write('file_title_stub.txt', highlights.join("\n"))

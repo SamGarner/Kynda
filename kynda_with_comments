@@ -24,8 +24,9 @@ titles.each { |title|
 
 	# 'clippings' pulls the text between the line containing the title and author 
 	# and the === break line before the next highlight. This returns one 
-	# match listing the page location and date of the highlight and one match with
-	# the desired highlighted conent (pulled out into 'highlights' variable) 
+	# match listing the page location and date of the highlight, one match of an 
+	# empty line and one match with the desired highlighted conent (pulled out 
+	# into 'highlights' variable) 
 	clippings = File.read(kindle_clippings).scan(
 		/#{Regexp.quote(corrected_title)}(.*)\r\n(.*)\r\n\r\n(.*)\r\n=======/).flatten
 	highlights = clippings.reject { |clipping| clipping.match(
