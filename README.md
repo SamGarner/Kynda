@@ -11,9 +11,9 @@ The program will have two outputs:
 *Note - You will only need one file from this repo to run the desktop version.* See 'Installation' below.
 
 #### Example of Generated Files
-<img src="demo/Kynda_Desktop_OutputFiles.jpg" alt="generated filelist example" width=auto height="400px"/><br>
+<img src="demo/Kynda_Desktop_OutputFiles.jpg" alt="generated filelist example" /><br>
 #### Example of Formatted Highlights
-<img src="demo/Kynda_Desktop_ExampleOutput.jpg" alt="formatted highlights example" width=auto height="400px"/><br>
+<img src="demo/Kynda_Desktop_ExampleOutput.jpg" alt="formatted highlights example"/><br>
 
 ## Use
 
