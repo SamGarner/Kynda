@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 # Specify your gem's dependencies in kynda.gemspec
 
-gem 'sinatra', '2.0.5'
+gem 'sinatra', '2.2.3'
 gem 'rerun', '0.13.0'
 
 group :test do
